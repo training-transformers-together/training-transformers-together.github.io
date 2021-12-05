@@ -50,8 +50,9 @@ def vocab(bsz, seqlen, dmodel, vocab_type):
     out_emb = seqlen*bsz*vocab_dim
     softmax_emb = seqlen*bsz*vocab_dim
 
-    model = w
+    model = w + dmodel
     grad = emb + emb_norm + pos_emb + out_emb + softmax_emb
+    grad *= 1
     return model, grad
 
 
@@ -83,17 +84,17 @@ def transformer_layer(bsz, seqlen, dmodel, dhid):
     model = 0
     grad = 0
 
-    m, g = ffn(bsz, seqlen, dmodel, dhid)
+    m, g = ffn(bsz, seqlen, dmodel, dhid, 'gelu')
     model += m
-    grad += g
+    grad += g*3
 
     m, g = attention_layer(bsz, seqlen, dmodel)
     model += m
-    grad += g
+    grad += g*5.0
 
     m, g = layer_norm(bsz, seqlen, dmodel)
     model += m
-    grad += g
+    grad += g*1.0
 
     return model, grad
 
@@ -103,25 +104,31 @@ def attention_layer(bsz, seqlen, dmodel):
 
     x_residual = bsz*seqlen*dmodel
     x_proj = bsz*seqlen*dmodel*3
+    #x_proj_contiguous = bsz*seqlen*dmodel*3
+    x_proj_contiguous = 0
+
     x_qscaled = bsz*seqlen*dmodel
-    x_qk = bsz*seqlen*seqlen
+    x_qk = bsz*seqlen*seqlen*2 # we need to store both input sequence directions for gradient computation
     x_softmax = bsz*seqlen*seqlen
-    x_softmax_v = bsz*seqlen*dmodel
+    x_softmax_v = bsz*seqlen*dmodel*2 # we need to store both input sequence directions for gradient computation
+    #x_out_contiguous = bsz*seqlen*dmodel
+    x_out_contiguous = 0
     x_out = bsz*seqlen*dmodel
 
     model = w_proj + w_out
-    grad = x_residual + x_proj + x_qscaled + x_qk + x_softmax + x_softmax_v + x_out
+    grad = x_residual + x_proj + x_proj_contiguous + x_qscaled + x_qk + x_softmax + x_softmax_v + x_out_contiguous + x_out
     return model, grad
 
 
 
-def ffn(bsz, seqlen, dmodel, dhid):
+def ffn(bsz, seqlen, dmodel, dhid, func='relu'):
     # out = linear(relu(linear(x), inplace=True)) + x
     w1 = dmodel*dhid
     w2 = dhid*dmodel
     model = w1 + w2
     wgrad = model
     x1 = bsz*seqlen*dhid
+    if func != 'relu': x1 *= 2 # inplace not possible with most other functions
     x2 = bsz*seqlen*dmodel
     residual = bsz*seqlen*dmodel
     grad = x1 + x2 + residual
@@ -131,6 +138,7 @@ def ffn(bsz, seqlen, dmodel, dhid):
 
 
 model, grad = transformer(args, args.bsz, args.seqlen, args.dmodel, args.nlayers, args.vocab, args.dhid)
+parameters = model
 
 if args.optimizer == 'adam':
     optim = 8*model
@@ -155,8 +163,6 @@ elif args.fp16_level == 'O3':
     wgrad = 2*model
     model = 2*model #fp16
     grad = 2*grad # fp32
-
-print(model/1024**3, grad/1024**3, optim/1024**3)
 
 model = get_GB(model)
 grad = get_GB(grad)
@@ -207,7 +213,7 @@ if args.offload:
 total_mem = model + grad + optim + wgrad
 
 print('')
-print(f'Model: {args.model} with batch size {args.bsz} and sequence length {args.seqlen}')
+print(f'Model: {args.model} with batch size {args.bsz} and sequence length {args.seqlen} and a total of {parameters/1e9:.4f}B parameters.')
 print('='*80)
 print('Weight memory:           {0:.2f} GB ({1:.2f}%)'.format(model, 100*model/total_mem))
 print('Weight gradient memory:  {0:.2f} GB ({1:.2f}%)'.format(wgrad, 100*wgrad/total_mem))

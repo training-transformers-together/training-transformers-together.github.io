@@ -47,6 +47,31 @@ models['gpt2-xl']['dmodel'] = 1600
 models['gpt2-xl']['dhidden'] = 1600*4
 models['gpt2-xl']['nlayers'] = 48
 
+
+models['gpt3-s'] = {}
+models['gpt3-s']['seqlen'] = 2048
+models['gpt3-s']['dmodel'] = 768
+models['gpt3-s']['dhidden'] = 768*4
+models['gpt3-s']['nlayers'] = 12
+
+models['gpt3-m'] = {}
+models['gpt3-m']['seqlen'] = 2048
+models['gpt3-m']['dmodel'] = 1024
+models['gpt3-m']['dhidden'] = 1024*4
+models['gpt3-m']['nlayers'] = 24
+
+models['gpt3-l'] = {}
+models['gpt3-l']['seqlen'] = 2048
+models['gpt3-l']['dmodel'] = 1536
+models['gpt3-l']['dhidden'] = 1536*4
+models['gpt3-l']['nlayers'] = 24
+
+models['gpt3-xl'] = {}
+models['gpt3-xl']['seqlen'] = 2048
+models['gpt3-xl']['dmodel'] = 2560
+models['gpt3-xl']['dhidden'] = 2560*4
+models['gpt3-xl']['nlayers'] = 24
+
 models['gpt3-3b'] = {}
 models['gpt3-3b']['seqlen'] = 2048
 models['gpt3-3b']['dmodel'] = 2560
