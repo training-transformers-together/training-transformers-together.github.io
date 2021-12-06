@@ -19,7 +19,7 @@
     <meta property="og:image:width" content="96">
     <meta property="og:image:height" content="96">
     <meta property="twitter:site" content="https://training-transformers-together.github.io">
-    <meta property="twitter:creator" content="Yandex, Huggingface, Hivemind team & contributors">
+    <meta property="twitter:creator" content="Yandex, Hugging Face, University of Washington, Hivemind team & contributors">
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:title" content="learning@home">
     <meta property="twitter:description" content="A NeurIPS'21 demonstration that explains how to train large models together with multiple collaborators.">
@@ -47,7 +47,7 @@
                         <span id="title_text">Training Transformers Together</span>
                     </p>
                     <p style="font-size: 18px; margin-top:0px; margin-bottom:0px;">
-                        large-scale training for everyone,&nbsp;by&nbsp;everyone</p>
+                        large-scale deep learning for everyone,&nbsp;by&nbsp;everyone</p>
                 </h1>
             </div>
         </div>
@@ -60,14 +60,14 @@
     There was a time when you could comfortably train state-of-the-art vision and language models at home on your workstation.
     The first convolutional neural net to beat ImageNet
     (<a target="_blank" href="https://proceedings.neurips.cc/paper/2012/file/c399862d3b9d6b76c8436e924a68c45b-Paper.pdf">AlexNet</a>)
-    was trained for 5-6 days on two gamer-grade GPUs. In contrast, today's TOP-1 ImageNet model
+    was trained for 5-6 days on two gamer-grade GPUs. In contrast, today's Top-1 ImageNet model
     (<a target="_blank" href="https://arxiv.org/abs/2106.04803">CoAtNet</a>)
     takes 20,000 TPU-v3 days. And things are even worse in the NLP world: training
     <a target="_blank" href="https://arxiv.org/abs/2005.14165">GPT‑3</a>
     on a top-tier server with 8x A100 would take decades.
   </p>
   <p>
-    So, can individual researchers and small labs still train state-of-the-art? Yes we can!
+    So, can individual researchers and small labs still train state-of-the-art models? Yes we can!
     All it takes is for a bunch of us to come together. In fact, we're doing it right now and <b>you are invited to join!</b>
   </p>
   <iframe id="iframe_main" src="https://hf.space/streamlitiframe/training-transformers-together/dashboard-embedded/+"
@@ -81,8 +81,8 @@
       <p>Please go to <a href="https://huggingface.co/training-transformers-together/demo">https://huggingface.co/training-transformers-together</a>.</p>
   </iframe>
   <p>
-    For this demo we train a model similar to <a target="_blank" href="https://openai.com/blog/dall-e/">OpenAI DALL-E</a>,
-    that is, a transformer "language model" that generates images from text description.
+    For this demo we train a model similar to <a target="_blank" href="https://openai.com/blog/dall-e/">OpenAI DALL-E</a> —
+    a Transformer "language model" that generates images from text descriptions.
     It is trained on <a target="_blank" href="https://laion.ai/laion-400-open-dataset/">LAION-400M</a>,
     the world's largest openly available image-text-pair dataset with 400 million samples. Our model is based on
     the <a target="_blank" href="https://github.com/lucidrains/DALLE-pytorch">dalle‑pytorch</a> implementation
@@ -98,7 +98,7 @@
       <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
         <div class="accordion-body">
           <p>
-            Modern distributed training algorithms are designed for HPC networks with 10-100 gigabit per second bandwidth.
+            Modern distributed training algorithms are designed for HPC clusters with a 10-100 gigabit per second bandwidth.
             In turn, a typical Internet connection runs at 10-100 megabits per second: that’s three orders of magnitude slower.
             To make distributed training efficient, you need to win back these three orders of magnitude.
             This may seem daunting at first, but in reality, DL researchers have already made all the necessary pieces for solving this puzzle:
@@ -114,30 +114,30 @@
               <tr><td class="centered"><strong>4-16x</strong></td><td>
                 <strong>Large-batch training:</strong> <a target="_blank" rel="noopener noreferrer" href="https://arxiv.org/abs/1904.00962">You et al. (2019)</a> proposed a way for training neural networks efficiently with larger batches, and hence, fewer communication rounds.
               </td></tr>
-              <tr><td class="centered"><strong>4-64x</strong></td><td>
-                <strong>Gradient Compression:</strong> from simple <a target="_blank" rel="noopener noreferrer" href="https://arxiv.org/abs/1511.04561">8-bit quantization</a>
+              <tr><td class="centered"><strong>4-32x</strong></td><td>
+                <strong>Gradient compression:</strong> from simple <a target="_blank" rel="noopener noreferrer" href="https://arxiv.org/abs/1511.04561">8-bit quantization</a>
                  to advanced techniques such as <a target="_blank" rel="noopener noreferrer" href="https://arxiv.org/abs/1712.01887">Deep Gradient Compression</a>,
                  <a target="_blank" rel="noopener noreferrer" href="https://arxiv.org/abs/1905.13727">PowerSGD</a>, <a target="_blank" rel="noopener noreferrer" href="https://arxiv.org/abs/2102.02888">1-bit Adam</a>,
-                  and many others. As a rule of thumb, you can safely reduce communication by 16-64x. More extreme compression is often
+                  and many others. As a rule of thumb, these techniques can safely reduce communication by 16-32x. More extreme compression is often
                   possible, but it may affect stability or final quality.
               </td></tr>
               <tr><td class="centered"><strong>4-24x</strong></td><td>
                  <strong>Parameter sharing:</strong> reusing parameters between model layers results in a model with fewer parameters,
                   and hence, fewer gradients to communicate. <a target="_blank" rel="noopener noreferrer" href="https://arxiv.org/abs/1909.11942">Lan et al. (2019)</a> and
-                  <a target="_blank" rel="noopener noreferrer" href="https://arxiv.org/pdf/2107.11817.pdf">Xue et al. (2021)</a> propose efficient parameter sharing techniques
-                  for NLP and vision.
+                  <a target="_blank" rel="noopener noreferrer" href="https://arxiv.org/pdf/2107.11817.pdf">Xue et al. (2021)</a> propose efficient parameter sharing architectures
+                  for NLP and computer vision.
               </td></tr>
               <tr><td class="centered"><strong>1.5-2x</strong></td><td>
                  <strong>Overlapping computation with communication:</strong> running network communication in background while
                  computing the next portion of gradients. This is a <a target="_blank" rel="noopener noreferrer" href="https://ur.booksc.eu/book/1624068/2d0506">long-standing trick from HPC</a>
                   that was recently adapted for DL training. <a target="_blank" rel="noopener noreferrer" href="https://arxiv.org/abs/2101.06840">Ren et al. (2021)</a> show that
-                   updating parameters in background while computing the next batch of gradients does not reduce convergence.
+                   updating parameters in background while computing the next batch of gradients does not harm convergence.
               </td></tr>
             </tbody>
           </table>
           <p>
-            These techniques are already more than enough to cover 1000x slower communication (48 times over!).
-            This means that in practice you can pick and choose choose which of them you want in your training run.
+            These techniques are already more than enough to cover 1000x slower communication.
+            This means that in practice you can pick and choose which of them you want in your training run.
             For this demo, we use 8x larger batches, 4x compression, 12x parameter sharing and partial overlapping.
             If you don’t want parameter sharing, you can trade it for more advanced gradient compression or larger batches.
           </p>
@@ -179,32 +179,32 @@
               </p>
               <p>
                   <b>8-bit optimizers:</b>
-                  Using optimizers such as LAMB or Adam requires four times as much GPU memory as simply storing model parameters (8 bytes vs 2 bytes).
-                  As such, for training large models with many parameters the optimizers make up the largest chunk of memory.
-                  With 8-bit optimizers this memory is reduced by 75% (2 bytes) making it much easier to fit large models onto consumer GPUs.
+                  Using optimizers such as LAMB or Adam requires four times as much GPU memory as simply storing model parameters (8 bytes vs 2 bytes)
+                  because of additional gradient statistics.
+                  As such, for training large models with many parameters, the optimizer state takes the largest amount of memory.
+                  With 8-bit optimizers, this amount is reduced by 75% (2 bytes), making it much easier to fit large models onto consumer GPUs.
               </p><p>
-                  Naturally, we can combine this technique with offloading: storing 8-bit optimizer states in CPU memory rather
-                  than GPU memory (0 bytes GPU, 2 bytes CPU). To perform an optimizer update, we transfer the GPU gradients
-                  to the CPU, perform the optimizer update, and then transfer the updated weights to the GPU.
-                  We can do this for each weight one-by-one so that additional CPU memory required for the optimizer update
-                  is minimal.
-                  The combination of offloading and 8-bit optimizers means that we conserve GPU memory (0 bytes per parameter)
+                  Naturally, we can combine this technique with offloading and store 8-bit optimizer states in the CPU memory rather
+                  than in the GPU memory (0 bytes GPU, 2 bytes CPU). To perform an optimizer update, we transfer the GPU gradients
+                  to the CPU, update the model parameters, and then copy the new weights to the GPU.
+                  We can do this for each weight one-by-one so that the additional CPU memory required for the
+                  optimizer update is minimal.
+                  This combination of offloading and 8-bit optimizers means that we conserve GPU memory (0 bytes per parameter)
                   and also use only a limited amount of CPU memory (2 bytes per parameter).
 
               </p>
               <p>
                   <b>Dataset streaming:</b>
-                  Usually data is stored on disk and needs to be fully or partially loaded into CPU memory to be used for training.
-                  Large datasets used for pre-training measure in <a target="_blank" rel="noopener noreferrer" href="https://arxiv.org/abs/2101.00027">hundreds of gigabytes</a>
+                  Usually data is stored on disk and needs to be fully or partially loaded into RAM for training.
+                  Large datasets used for pretraining measure in <a target="_blank" rel="noopener noreferrer" href="https://arxiv.org/abs/2101.00027">hundreds of gigabytes</a>
                     or even <a target="_blank" rel="noopener noreferrer" href="https://laion.ai/laion-400-open-dataset/">terabytes</a>.
-                  This can pose a significant problem, as most desktop and cheap cloud instance simply do not have that much space.
-                  Furthermore, downloading the dataset over the internet would take up hours before one can even begin training.
-                  <!--Changing the dataset means downloading a new dataset in full and using additional disk space.-->
+                  This can pose a significant problem, as most desktop and cheap cloud instances simply do not have that much free space.
+                  Furthermore, downloading the data over the Internet would take up hours before one can even begin training.
               </p><p>
-                  To circumvent these problems, we stream the training dataset in the same way as you stream online videos.
+                  To circumvent these problems, it is possible to stream the data in the same way as you stream online videos.
                   Participants download a small random portion of the training dataset and immediately begin training on it,
-                  while additional data is loaded in background. As such, we can train a model with virtually no memory
-                  overhead from the dataset and switching to a new dataset is as simple as changing an argument to the dataset class.
+                  while additional data is loaded in the background. As such, we can train a model with virtually no storage
+                  overhead from the dataset, and switching to a new dataset is as simple as changing an argument of the dataset class.
               </p>
               <center>
                   Here's a tutorial for using these techniques:<br>
@@ -215,19 +215,19 @@
 
           </div>
           <div class="tab-pane fade" id="security">
-              <p>In this section, we discuss common concerns related to security of the collaborative training.</p>
+              <p>In this section, we discuss common concerns related to security of collaborative training:</p>
 
               <p>
-              <b>Q: If I join a collaborative training, do I allow other people to execute code on my computer?</b>
+              <b>Q: If I join a collaborative experiment, do I allow other people to execute code on my computer?</b>
               </p>
 
               <p>
               <b>A:</b> During the training, participants only exchange data (gradients, statistics, model weights) and never send code to each other.
-              No other peer can execute code on your computer.
+              No other peer can execute arbitrary code on your computer.
               </p>
 
               <p>
-              To join the training, you typically need to run the code (implementing the model, data streaming, training loop, etc.)
+              To join the experiment, you typically need to run the code (implementing the model, data streaming, training loop, etc.)
               from a repository or a Colab notebook provided by the authors of the experiment.
               This is no different from running any other open source project/Colab notebook.
               </p>
@@ -237,8 +237,8 @@
               </p>
 
               <p>
-              <b>A:</b> It is indeed possible unless we use some defense mechanism.
-              For instance, a malicious participant can damage model weights by sending large numbers instead of the correct gradients.
+              <b>A:</b> It is indeed possible unless we use some defense mechanisms.
+              For instance, a malicious participant can damage model weights by sending large numbers instead of correct gradients.
               The same can happen due to broken hardware or misconfiguration.
               </p>
 
@@ -248,7 +248,7 @@
                   One possible defense is using <b>authentication</b> combined with <b>model checkpointing</b>.
                   In this case, participants should log in (e.g. with their Hugging Face account) to interact with the rest of the collaboration.
                   In turn, moderators can screen potential participants and add them to an allowlist.
-                  If something goes wrong (e.g. if a participant sends invalid gradients and the model diverges),
+                  If something goes wrong (e.g. a participant sends invalid gradients and the model diverges),
                   the moderators remove them from the list and revert the model to the latest checkpoint unaffected by the attack.
                   </p>
 
@@ -260,7 +260,7 @@
               </li>
               <li>
               <p>
-                  Another defense is replacing the naive averaging of the peers' gradients with an <b>aggregation technique robust to outliers</b>.
+                  Another defense is replacing the naive averaging of the peers' gradients with an <b>aggregation technique that is robust to outliers</b>.
                   <a target="_blank" rel="noopener noreferrer" href="https://arxiv.org/abs/2012.10333">Karimireddy et al. (2020)</a>
                   suggested such a technique (named CenteredClip) and proved that it does not significantly affect the model's convergence.
                   </p>
@@ -270,7 +270,8 @@
                   <p>
                   In our case, CenteredClip is useful but not enough to protect from malicious participants,
                   since it implies that the CenteredClip procedure itself is performed by a trusted server.
-                  In contrast, in our decentralized system, all participants can aggregate a part of the gradients and we cannot assume all of them to be trusted.
+                  By contrast, in our decentralized system, all participants can aggregate a part of the gradients,
+                  and we cannot assume any of them to be trusted.
                   </p>
 
                   <p>
@@ -282,28 +283,28 @@
               </ul>
           </div>
           <div class="tab-pane fade" id="make-your-own">
-              <p>In this section, we provide a roadmap for you to run the collaborative training yourself.</p>
+              <p>In this section, we provide a recipe for you to run a collaborative training experiment yourself.</p>
               <p>
-                  <b>Got confused?</b> Feel free to ask any questions at our <a target="_blank" rel="noopener noreferrer" href="https://discord.gg/uGugx9zYvN">Discord</a>!
+                  <b>Got confused?</b> Feel free to ask any questions in our <a target="_blank" rel="noopener noreferrer" href="https://discord.gg/uGugx9zYvN">Discord</a>!
               </p>
               <ol>
                   <li>
                       Set up dataset streaming:
                       <ul>
                           <li>
-                              <a target="_blank" rel="noopener noreferrer" href="https://huggingface.co/docs/datasets/share_dataset.html">Upload</a> your dataset to Hugging Face Hub
+                              <a target="_blank" rel="noopener noreferrer" href="https://huggingface.co/docs/datasets/share_dataset.html">Upload</a> your dataset to the Hugging Face Hub
                               in a streaming-friendly format (<a target="_blank" rel="noopener noreferrer" href="https://huggingface.co/datasets/laion/laion_100m_vqgan_f8">example</a>).
                           </li>
                           <li>Set up dataset streaming (see the "Efficient Training" section).</li>
                       </ul>
                   </li>
                   <li>
-                      Write code of training peers (<a target="_blank" rel="noopener noreferrer" href="https://github.com/learning-at-home/dalle-hivemind/blob/main/run_trainer.py">example</a>):
+                      Write the code of training peers (<a target="_blank" rel="noopener noreferrer" href="https://github.com/learning-at-home/dalle-hivemind/blob/main/run_trainer.py">example</a>):
                       <ul>
                           <li>Implement your model, set up dataset streaming, and write the training loop.</li>
                           <li>
-                              Get familiar with the hivemind library
-                              (e.g., via the <a target="_blank" rel="noopener noreferrer" href="https://learning-at-home.readthedocs.io/en/latest/user/quickstart.html">quickstart</a>).
+                              Get familiar with the <a href="https://github.com/learning-at-home/hivemind">hivemind</a> library
+                              (<a target="_blank" rel="noopener noreferrer" href="https://learning-at-home.readthedocs.io/en/latest/user/quickstart.html">quickstart</a>).
                           </li>
                           <li>
                               In the training loop, wrap up your PyTorch optimizer with
@@ -313,15 +314,15 @@
                       </ul>
                   </li>
                   <li>
-                      <b>(optional)</b> Write code of auxiliary peers (<a target="_blank" rel="noopener noreferrer" href="https://github.com/learning-at-home/dalle-hivemind/blob/main/run_aux_peer.py">example</a>):
+                      <b>(optional)</b> Write the code of auxiliary peers (<a target="_blank" rel="noopener noreferrer" href="https://github.com/learning-at-home/dalle-hivemind/blob/main/run_aux_peer.py">example</a>):
                       <ul>
                           <li>
-                              Auxiliary peers a special kind of peers responsible for
-                              logging loss and other metrics (e.g., to <a target="_blank" rel="noopener noreferrer" href="https://wandb.ai/">Weights & Biases</a>)
+                              Auxiliary peers are a special kind of peers responsible for
+                              logging experiment progress (e.g., to <a target="_blank" rel="noopener noreferrer" href="https://wandb.ai/">Weights & Biases</a>)
                               and uploading model checkpoints (e.g., to <a target="_blank" rel="noopener noreferrer" href="https://huggingface.co/docs/transformers/model_sharing">Hugging Face Hub</a>).
                           </li>
                           <li>
-                              Such peers don't need to calculate gradients and may be run on cheap machines without GPUs.
+                              Such peers don't need to calculate gradients and may be launched on cheap machines without GPUs.
                           </li>
                           <li>
                               They can serve as a convenient entry point to
@@ -346,13 +347,13 @@
                               <a target="_blank" rel="noopener noreferrer" href="https://huggingface.co/organizations/new">Create</a> a Hugging Face organization
                               with all resources related to the training
                               (dataset, model, inference demo, links to a dashboard with loss and other metrics, etc.).
-                              Look at <a target="_blank" rel="noopener noreferrer" href="https://huggingface.co/training-transformers-together">ours</a> as an example.
+                              Look at <a target="_blank" rel="noopener noreferrer" href="https://huggingface.co/training-transformers-together">ours</a> for an example.
                           </li>
                           <li>
                               Set up an authentication system (see the "Security" section).
                               For example, you can ask people to join your organization with their Hugging Face accounts
-                              (Hugging Face allows to share a link for joining or manually approve new participants).
-                              This allows you to screen participants,
+                              (the website allows either sharing a link for joining or manually approving new participants).
+                              This allows you to screen the peers,
                               acknowledge their contributions (e.g., make a leaderboard), and
                               ban accounts who behave maliciously.
                           </li>
