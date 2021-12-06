@@ -1,0 +1,130 @@
+:root {
+  --border-color: black;
+  --window-color: white;
+  --background-move-on-cursor: false;
+  --background-color: white;
+  --background-cursor-width: 400;
+  --background-cursor-height: 200;
+  --background-show-if-wider-than: 500;
+  --background-speed: 0.001;
+  --energy-decay: 0.3;
+}
+
+html {
+  font-size: 14px;
+}
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.container {
+  max-width: 46rem;
+}
+
+.pricing-header {
+  max-width: 700px;
+}
+
+.card-deck .card {
+  min-width: 220px;
+}
+
+.border-top { border-top: 1px solid #e5e5e5; }
+.border-bottom { border-bottom: 1px solid #e5e5e5; }
+
+.box-shadow { box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05); }
+
+.arxiv_button {
+  position: relative;
+  display: inline-block;
+  width: 80px;
+  height: 28px;
+  background-image: linear-gradient(180deg, #fafbfc, #eff3f6 90%);
+  color: #24292e;
+  border: 1px solid rgba(27,31,35,.2);
+  text-align: center;
+  cursor: pointer;
+  border-radius: 4px;
+  padding-right: 0px;
+  padding-top: 2.5px;
+  font-size: 12px;
+  font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif;
+  font-weight: 600;
+}
+.arxiv_button:before {
+  content: "";
+  vertical-align:middle;
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  border: none;
+  margin-left: -16px;
+  margin-right: 4px;
+  margin-top: -2px;
+  background: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" class="ionicon s-ion-icon" viewBox="0 0 512 512"><path d="M428 224H288a48 48 0 01-48-48V36a4 4 0 00-4-4h-92a64 64 0 00-64 64v320a64 64 0 0064 64h224a64 64 0 0064-64V228a4 4 0 00-4-4z"></path><path d="M419.22 188.59L275.41 44.78a2 2 0 00-3.41 1.41V176a16 16 0 0016 16h129.81a2 2 0 001.41-3.41z"></path></svg>') right center no-repeat;
+  background-size: 18px 16px;
+}
+.arxiv_button:hover {
+    background-color:#e6ebf1;
+    background-position:-0.5em;
+    border-color: #9fa4a9;
+    border-color:rgba(27,31,35,.35);
+    background-image:linear-gradient(180deg, #f0f3f6, #e6ebf1 90%)
+}
+
+#main_window {
+  width: 80%;
+  min-width: 320px;
+  margin: 0 auto;
+  text-align: center;
+}
+.faded {
+  margin: 0 auto;
+  background: var(--window-color);
+  box-shadow: 0 0 5px 5px var(--window-color);
+  font-family: cursive;
+  font-family: "Gill Sans", sans-serif;
+  display: inline-block
+}
+.padded {
+    width: 100%;
+    max-width: 800px;
+    text-align: left;
+}
+.title {
+   font-size: 32px;
+   box-shadow: 0 0 5px 5px var(--window-color);
+   font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,
+                sans-serif,Apple Color Emoji,Segoe UI Emoji;
+}
+canvas {
+  background-color: var(--background-color);
+  width: 0px; /* will be changed on init */
+  overflow: hidden;
+}
+
+a {
+  color: #337ab7;
+  font-weight: 600;
+}
+a:hover {
+  color: #0056b3;
+}
+.nav-link {
+  color: #337ab7;
+  padding: 0.5rem 1rem;
+  font-weight: normal;
+}
+.nav-link:hover {
+  color: #337ab7;
+}
