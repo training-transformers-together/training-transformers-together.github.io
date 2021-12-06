@@ -87,11 +87,16 @@
     the world's largest openly available image-text-pair dataset with 400 million samples. Our model is based on
     the <a target="_blank" href="https://github.com/lucidrains/DALLE-pytorch">dalle‑pytorch</a> implementation
     by <a target="_blank" href="https://github.com/lucidrains">Phil Wang</a> with a few tweaks to make it communication-efficient.
+    <!-- TODO mention DeDLOC (?) and explain how we distribute computation across peers.
+    Right now, it's not clear how we do collaborative training (even a surface-level explanation would suffice),
+    since it isn't stated in the intro and the distributed part only comes into play in the last half of the security tab  -->
   </p>
   <div class="accordion" id="accordionExample">
     <div class="accordion-item">
       <h2 class="accordion-header" id="headingOne">
         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+          <!-- TODO think of a better location for this section, IMO the buttons to join the experiment/see the plots should be immediately after the introductory paragraph   -->
+
           How to train efficiently over the Internet?
         </button>
       </h2>
@@ -151,6 +156,9 @@
   <p>This section will be updated <strong>on December 7</strong>.</p>
 
   <h3 class="my-4">What happens inside?</h3>
+  <!-- TODO the header text is a bit misleading, it should either be renamed or the sections regrouped
+   (e.g., the "setting up your experiment" is not about the inner workings of collaborative training,
+   so maybe it can go outside the tab pane; instead, the first section can be about communication efficiency) -->
 
   <div>
       <!-- Nav tabs -->
@@ -295,6 +303,7 @@
                               in a streaming-friendly format (<a target="_blank" rel="noopener noreferrer" href="https://huggingface.co/datasets/laion/laion_100m_vqgan_f8">example</a>).
                           </li>
                           <li>Set up dataset streaming (see the "Efficient Training" section).</li>
+                          <!-- TODO there is no section with such name              -->
                       </ul>
                   </li>
                   <li>
