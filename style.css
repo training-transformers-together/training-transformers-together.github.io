@@ -102,7 +102,7 @@ a:hover {
     background-image:linear-gradient(180deg, #f0f3f6, #e6ebf1 90%)
 }
 
-#main_window {
+#header_window {
   width: 80%;
   min-width: 320px;
   margin: 0 auto;
