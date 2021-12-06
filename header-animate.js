@@ -3,7 +3,7 @@
 (function() {
   var content_element = document.getElementById("overlay");
   var canvas = document.querySelector('canvas');
-  var title_elem = document.getElementsByClassName("faded title")[0];
+  var title_elem = document.getElementsByClassName("title_elem")[0];
   var title_text = document.getElementById("title_text");
   ctx = canvas.getContext('2d');
   if (!ctx)

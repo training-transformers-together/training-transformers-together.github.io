@@ -34,27 +34,28 @@
   </head>
 
   <body>
-    <div id="header_container">
-      <canvas></canvas>
-      <div id="overlay">
-        <div id="main_window" class="my-5">
-            <div id="header">
-                <img src="https://learning-at-home.github.io/logo.png" id="bug-logo"
-                    style="width: 40%; max-height: 320px; max-width: 320px; z-index:1000; position: relative;">
-                <br>
-                <h1 class="faded title" style="margin-top:-5%;">
-                    <p style="margin-top: 0px; margin-bottom:0px;">
-                        <span id="title_text">Training Transformers Together</span>
-                    </p>
-                    <p style="font-size: 18px; margin-top:0px; margin-bottom:0px;">
-                        large-scale training for everyone,&nbsp;by&nbsp;everyone</p>
-                </h1>
+      <div class="container">
+        <div id="header_main" style="display: block;">
+          <canvas></canvas>
+          <div id="overlay">
+            <div id="header_window">
+                <div id="header">
+                    <img src="https://learning-at-home.github.io/logo.png" id="bug-logo"
+                        style="width: 40%; max-height: 320px; max-width: 320px; z-index:1000; position: relative;">
+                    <br>
+                    <h1 class="faded title title_elem" style="margin-top:-5%;">
+                        <p style="margin-top: 0px; margin-bottom:0px;">
+                            <span id="title_text">Training Transformers Together</span>
+                        </p>
+                        <p style="font-size: 18px; margin-top:0px; margin-bottom:0px;">
+                            large-scale training for everyone,&nbsp;by&nbsp;everyone</p>
+                    </h1>
+                </div>
             </div>
-        </div>
+          </div>
       </div>
-    </div>
-    <script src="./header-animate.js"></script>
-    <div class="container">
+      <script src="./header-animate.js"></script>
+      <div style="display: block;">
       <p>
         There was a time when you could comfortably train state-of-the-art vision and language models at home on your workstation.
         The first convolutional neural net to beat ImageNet
@@ -363,6 +364,7 @@
         </div>
       </footer>
     </div>
+  </div>
 
 
     <!-- Bootstrap core JavaScript

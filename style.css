@@ -23,12 +23,12 @@ body {
   margin: 0 auto;
   background-color: var(--background-color);
 }
-#header_container {
+#header_main {
   position: relative;
   width: 100%;
   margin: 0 auto;
 }
-#header_container canvas, #overlay {
+#header_main canvas, #overlay {
   width: 100%;
   margin: 0 auto;
   position: absolute;
