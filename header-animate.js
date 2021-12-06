@@ -185,7 +185,7 @@
     var new_width, new_height;
     new_width = Math.round(Math.max(title_elem.getBoundingClientRect().right, window.innerWidth))
     if (screen.width < 640)
-      title_text.style.fontSize = "24px";
+      title_text.style.fontSize = "20px";
     else
       title_text.style.fontSize = "32px";
 
