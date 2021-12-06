@@ -33,11 +33,6 @@ body {
   margin: 0 auto;
   position: absolute;
 }
-canvas {
-  background-color: var(--background-color);
-  width: 0px; /* will be changed on init */
-  overflow: hidden;
-}
 
 a {
   text-decoration: none;

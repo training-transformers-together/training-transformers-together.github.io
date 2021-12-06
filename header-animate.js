@@ -1,6 +1,7 @@
 // draw background; Note: this background is based on https://codepen.io/pawelqcm/pen/oxPYox by Pawel
 // Note 2: Pawel, you're awesome.
 (function() {
+  var main_element = document.getElementById("header_main");
   var content_element = document.getElementById("overlay");
   var canvas = document.querySelector('canvas');
   var title_elem = document.getElementsByClassName("title_elem")[0];
@@ -199,6 +200,7 @@
     if (canvas.width != new_width || canvas.height != new_height) {
         canvas.width = new_width;
         canvas.height = new_height;
+        main_element.style.height = (title_elem.offsetHeight + title_elem.offsetTop + 24) + "px";
         initNodes();
     }
     if (!MOVE_ON_CURSOR)
