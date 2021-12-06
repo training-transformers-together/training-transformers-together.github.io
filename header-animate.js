@@ -200,7 +200,7 @@
     if (canvas.width != new_width || canvas.height != new_height) {
         canvas.width = new_width;
         canvas.height = new_height;
-        main_element.style.height = (title_elem.offsetHeight + title_elem.offsetTop + 32) + "px";
+        main_element.style.height = (title_elem.offsetHeight + title_elem.offsetTop + 10) + "px";
         initNodes();
     }
     if (!MOVE_ON_CURSOR)

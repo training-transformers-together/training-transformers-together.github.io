@@ -34,7 +34,7 @@
   </head>
 
   <body>
-    <div id="header_main" style="display: block;">
+    <div id="header_main" style="display: block;" class="mb-0 pb-0">
       <canvas></canvas>
       <div id="overlay">
         <div id="header_window">
@@ -42,18 +42,45 @@
                 <img src="https://learning-at-home.github.io/logo.png" id="bug-logo"
                     style="width: 40%; max-height: 320px; max-width: 320px; z-index:1000; position: relative;">
                 <br>
-                <h1 class="faded title title_elem" style="margin-top:-5%;">
-                    <p style="margin-top: 0px; margin-bottom:0px;">
+                <h1 class="faded title title_elem mb-1 pb-1" style="margin-top:-40px; margin-bottom:-10px">
+                    <p style="margin-top: 0px; font-weight:bolder; margin-bottom:0px;">
                         <span id="title_text">Training Transformers Together</span>
                     </p>
-                    <p style="font-size: 18px; margin-top:0px; margin-bottom:0px;">
-                        large-scale deep learning for everyone,&nbsp;by&nbsp;everyone</p>
+                    <p style="font-size: 18px; margin-top:0px; margin-bottom:5px;">
+                        large-scale deep learning for everyone, by everyone</p>
+                    <p style="font-size: 18px; font-weight:lighter; margin-top:0px; margin-bottom:0px;">
+                        A NeurIPS 2021 Demonstration</p>
                 </h1>
             </div>
         </div>
       </div>
   </div>
   <script src="./header-animate.js"></script>
+
+  <div class="container d-flex justify-content-center mb-2 pb-2" style="width:500px">
+          <div class="row text-center align-items-center justify-content-center">
+              <div class="col-3">
+                  <a href="https://research.yandex.com/">
+                  <img src="logos/yandex.png" class="img-fluid center-block" style="max-width: 75%" alt="Yandex Research">
+                  </a>
+              </div>
+              <div class="col-3 px-2">
+                  <a href="https://huggingface.co/">
+                  <img src="logos/huggingface.png" class="img-fluid center-block" style="max-width: 75%" alt="Hugging Face">
+                  </a>
+              </div>
+              <div class="col-3 px-3">
+                  <a href="https://www.hse.ru/en/">
+                  <img src="logos/hse.png" class="img-fluid center-block" style="max-width: 75%" alt="HSE University">
+                  </a>
+              </div>
+              <div class="col-3 px-2">
+                  <a href="http://www.washington.edu/">
+                  <img src="logos/uwash.svg" class="img-fluid center-block" style="max-width: 75%" alt="University of Washington">
+                  </a>
+              </div>
+          </div>
+  </div>
 
   <div class="container" style="display: block;">
   <p>
@@ -81,7 +108,7 @@
       <p>Please go to <a href="https://huggingface.co/training-transformers-together/demo">https://huggingface.co/training-transformers-together</a>.</p>
   </iframe>
   <p>
-    For this demo we train a model similar to <a target="_blank" href="https://openai.com/blog/dall-e/">OpenAI DALL-E</a> —
+    In this demo, we train a model similar to <a target="_blank" href="https://openai.com/blog/dall-e/">OpenAI DALL-E</a> —
     a Transformer "language model" that generates images from text descriptions.
     It is trained on <a target="_blank" href="https://laion.ai/laion-400-open-dataset/">LAION-400M</a>,
     the world's largest openly available image-text-pair dataset with 400 million samples. Our model is based on
@@ -152,9 +179,9 @@
 
   <h3 class="my-4">What happens inside?</h3>
 
-  <div>
+  <div class="border-bottom pb-3">
       <!-- Nav tabs -->
-      <ul class="nav nav-tabs mb-3">
+      <ul class="nav nav-tabs m-3">
           <li class="nav-item">
             <a class="nav-link active" data-bs-toggle="tab" href="#memory-efficiency">Memory-Efficient Training</a>
           </li>
@@ -206,12 +233,14 @@
                   while additional data is loaded in the background. As such, we can train a model with virtually no storage
                   overhead from the dataset, and switching to a new dataset is as simple as changing an argument of the dataset class.
               </p>
-              <center>
-                  Here's a tutorial for using these techniques:<br>
-                  <a target="_blank" rel="noopener noreferrer" href="https://colab.research.google.com/gist/justheuristic/75f6a2a731f05a213a55cd2c8a458aaf/fine-tune-a-language-model-with-dataset-streaming-and-8-bit-optimizers.ipynb">
-                      <img src="https://colab.research.google.com/assets/colab-badge.svg" width=360px>
-                  </a>
-              </center>
+              <h4>
+              <b>Here's our tutorial covering these methods:</b>
+              <a target="_blank" rel="noopener noreferrer" href="https://colab.research.google.com/gist/justheuristic/75f6a2a731f05a213a55cd2c8a458aaf/fine-tune-a-language-model-with-dataset-streaming-and-8-bit-optimizers.ipynb">
+                <span class="mx-2 mb-5" >
+                  <img src="https://colab.research.google.com/assets/colab-badge.svg" style="margin-top:-5px" width=200px>
+                </span>
+              </a>
+              </h4>
 
           </div>
           <div class="tab-pane fade" id="security">
@@ -369,21 +398,27 @@
 
   </div>
 
-  <footer class="pt-3 my-md-5 pt-md-5 border-top">
-    <div style="width: 260px; margin:0 auto;">
-      <a class="github-button" href="https://github.com/learning-at-home/hivemind" data-size="large" data-show-count="false" aria-label="Star learning-at-home/hivemind on GitHub">Code</a>
-      <div style="overflow: hidden; white-space: nowrap; margin: 0 auto; display: inline-block;">
-          <button onclick="window.open('https://arxiv.org/abs/2106.10207');"
-                  class="arxiv_button">Paper</button>
-      </div>
-      <a href="https://twitter.com/intent/tweet?hashtags=neurips,joinhivemind&text=Join%20the%20deep%20learning%20hivemind!%0Atraining-transformers-together.github.io"
-          class="twitter-hashtag-button" data-show-count="true" data-size="large">Tweet</a>
-      <script async defer src="https://buttons.github.io/buttons.js"></script>
-      <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-    </div>
-  </footer>
-</div>
+  <h3 class="my-3">Organizers</h3>
 
+    This demonstration was created by
+    <a href="https://twitter.com/sasha_borzunov">Alexander Borzunov*</a>,
+    <a href="https://twitter.com/m_ryabinin">Max Ryabinin*</a>,
+    <a href="https://twitter.com/Tim_Dettmers">Tim Dettmers*</a>,
+    <a href="https://twitter.com/qlhoest">Quentin Lhoest*</a>,
+    <a href="https://twitter.com/LucileSaulnier">Lucile Saulnier*</a>,
+    <a href="https://twitter.com/michael_diskin">Michael Diskin</a>,
+    <a href="https://twitter.com/YJernite">Yacine Jernite</a>, and
+    <a href="https://twitter.com/Thom_Wolf">Thomas Wolf</a>.
+
+  <h3 class="my-3">Learn more</h3>
+
+  <ul class="mb-5">
+      <li>A NeurIPS 2021 <a href="https://arxiv.org/abs/2106.10207">paper</a> on collaborative deep learning.</li>
+      <li><a href="https://github.com/learning-at-home/hivemind">hivemind</a> is a PyTorch library for decentralized deep learning.</li>
+      <li><a href="https://github.com/huggingface/datasets">🤗 Datasets</a> allows uploading and streaming training data from the Hub.</li>
+      <li><a href="https://github.com/facebookresearch/bitsandbytes">bitsandbytes</a> contains implementations of 8-bit optimizers.</li>
+      <li>A <a href="https://arxiv.org/abs/2110.02861">paper</a> on blockwise quantization for communication-efficient training.</li>
+  </ul>
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
