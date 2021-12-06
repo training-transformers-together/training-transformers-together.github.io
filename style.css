@@ -34,6 +34,23 @@ body {
   margin: 0 auto;
   position: absolute;
 }
+
+a {
+  color: #337ab7;
+  font-weight: 600;
+}
+a:hover {
+  color: #0056b3;
+}
+.nav-link {
+  color: #337ab7;
+  padding: 0.5rem 1rem;
+  font-weight: normal;
+}
+.nav-link:hover {
+  color: #337ab7;
+}
+
 canvas {
   background-color: var(--background-color);
   width: 0px; /* will be changed on init */
@@ -149,24 +166,3 @@ canvas {
   visibility: visible;
   opacity: 1;
 }
-
-a:hover {
-  text-decoration: underline;
-}
-
-.container {
-  max-width: 46rem;
-}
-
-.pricing-header {
-  max-width: 700px;
-}
-
-.card-deck .card {
-  min-width: 220px;
-}
-
-.border-top { border-top: 1px solid #e5e5e5; }
-.border-bottom { border-bottom: 1px solid #e5e5e5; }
-
-.box-shadow { box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05); }
