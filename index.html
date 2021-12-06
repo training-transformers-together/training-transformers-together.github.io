@@ -1,43 +1,372 @@
-<!DOCTYPE html>
-<meta charset="utf-8">
-<!-- <title>Redirecting to a Hugging Face space</title>
-<meta http-equiv="refresh" content="0; URL=https://hf.space/streamlitiframe/training-transformers-together/demo/+">
-<link rel="canonical" href="https://hf.space/streamlitiframe/training-transformers-together/demo/+">
- -->
 
-<head>
- <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
- <title>Training Transformers Together</title>
- <meta name="description" content="A NeurIPS'21 demonstration that explains how to train large models together with multiple collaborators.">
- <link rel="mask-icon" href="https://learning-at-home.github.io/logo_small.png">
- <link rel="alternate icon" class="js-site-favicon" type="image/png" href="https://learning-at-home.github.io/logo.png">
- <link rel="icon" class="js-site-favicon" type="image/png" href="https://learning-at-home.github.io/logo.png">
- <meta property="og:url" content="https://training-transformers-together.github.io">
- <meta property="og:site_name" content="learning@home">
- <meta property="og:title" content="Train vast neural networks together">
- <meta property="og:description" content="A NeurIPS'21 demonstration that explains how to train large models together with multiple collaborators.">
- <meta property="og:image" content="https://learning-at-home.github.io/logo_small.png">
- <meta property="og:image:type" content="image/png">
- <meta property="og:image:width" content="96">
- <meta property="og:image:height" content="96">
- <meta property="twitter:site" content="https://training-transformers-together.github.io">
- <meta property="twitter:creator" content="Yandex, Huggingface, Hivemind contributors">
- <meta property="twitter:card" content="summary_large_image">
- <meta property="twitter:title" content="learning@home">
- <meta property="twitter:description" content="A NeurIPS'21 demonstration that explains how to train large models together with multiple collaborators.">
- <meta property="twitter:image:src" content="https://learning-at-home.github.io/logo_horizontal.png">
- <meta name="viewport" content="width=device-width, initial-scale=1">
-</head>
-<body>
- <iframe id="main_iframe" src="https://hf.space/streamlitiframe/training-transformers-together/demo/+"
-   data-src="https://hf.space/streamlitiframe/training-transformers-together/demo/+"
-   data-sdk="streamlit"
-   title="Streamlit app" class="container p-0 flex-grow space-iframe"
-   allow="accelerometer; ambient-light-sensor; autoplay; battery; camera; document-domain; encrypted-media; fullscreen; geolocation; gyroscope; layout-animations; legacy-image-formats; magnetometer; microphone; midi; oversized-images; payment; picture-in-picture; publickey-credentials-get; sync-xhr; usb; vr ; wake-lock; xr-spatial-tracking"
-   sandbox="allow-forms allow-modals allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts allow-downloads"
-   style="top:0; left:0; bottom:0; right:0; width:100%; height:100%; border:none; margin:0; padding:0; overflow: scroll; z-index:999999; height: 4000px" scrolling="yes">
- <p>This was meant to be an IFrame, but your browser did not display it.</p>
- <p>Please go to <a href="https://huggingface.co/spaces/training-transformers-together/demo">https://huggingface.co/spaces/training-transformers-together/demo</a>.</p>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 
- </iframe>
-</body>
+    <title>Training Transformers Together</title>
+    <meta name="description" content="A NeurIPS'21 demonstration that explains how to train large models together with multiple collaborators.">
+    <link rel="mask-icon" href="https://learning-at-home.github.io/logo_small.png">
+    <link rel="alternate icon" class="js-site-favicon" type="image/png" href="https://learning-at-home.github.io/logo.png">
+    <link rel="icon" class="js-site-favicon" type="image/png" href="https://learning-at-home.github.io/logo.png">
+    <meta property="og:url" content="https://training-transformers-together.github.io">
+    <meta property="og:site_name" content="learning@home">
+    <meta property="og:title" content="Train vast neural networks together">
+    <meta property="og:description" content="A NeurIPS'21 demonstration that explains how to train large models together with multiple collaborators.">
+    <meta property="og:image" content="https://learning-at-home.github.io/logo_small.png">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="96">
+    <meta property="og:image:height" content="96">
+    <meta property="twitter:site" content="https://training-transformers-together.github.io">
+    <meta property="twitter:creator" content="Yandex, Huggingface, Hivemind team & contributors">
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="learning@home">
+    <meta property="twitter:description" content="A NeurIPS'21 demonstration that explains how to train large models together with multiple collaborators.">
+    <meta property="twitter:image:src" content="https://learning-at-home.github.io/logo_horizontal.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap core CSS -->
+    <link href="https://bootswatch.com/5/flatly/bootstrap.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="./style.css" rel="stylesheet">
+  </head>
+
+  <body>
+    <div class="container">
+      <canvas></canvas>
+      <div id="overlay">
+        <div id="main_window" class="my-5">
+            <div id="header">
+                <img src="https://learning-at-home.github.io/logo.png" id="bug-logo"
+                    style="width: 40%; max-height: 320px; max-width: 320px; z-index:1000; position: relative;">
+                <br>
+                <h1 class="faded title" style="margin-top:-5%;">
+                    <p style="margin-top: 0px; margin-bottom:0px;">
+                        <span id="title_text">Training Transformers Together</span>
+                    </p>
+                    <p style="font-size: 18px; margin-top:0px; margin-bottom:0px;">
+                        large-scale training for everyone,&nbsp;by&nbsp;everyone</p>
+                </h1>
+            </div>
+        </div>
+      </div>
+      <script src="./header-animate.js"></script>
+
+      <p>
+        There was a time when you could comfortably train state-of-the-art vision and language models at home on your workstation.
+        The first convolutional neural net to beat ImageNet
+        (<a target="_blank" href="https://proceedings.neurips.cc/paper/2012/file/c399862d3b9d6b76c8436e924a68c45b-Paper.pdf">AlexNet</a>)
+        was trained for 5-6 days on two gamer-grade GPUs. In contrast, today's TOP-1 ImageNet model
+        (<a target="_blank" href="https://arxiv.org/abs/2106.04803">CoAtNet</a>)
+        takes 20,000 TPU-v3 days. And things are even worse in the NLP world: training
+        <a target="_blank" href="https://arxiv.org/abs/2005.14165">GPT‑3</a>
+        on a top-tier server with 8x A100 would take decades.
+      </p>
+      <p>
+        So, can individual researchers and small labs still train state-of-the-art? Yes we can!
+        All it takes is for a bunch of us to come together. In fact, we're doing it right now and <b>you are invited to join!</b>
+      </p>
+      <p>
+        For this demo we train a model similar to <a target="_blank" href="https://openai.com/blog/dall-e/">OpenAI DALL-E</a>,
+        that is, a transformer "language model" that generates images from text description.
+        It is trained on <a target="_blank" href="https://laion.ai/laion-400-open-dataset/">LAION-400M</a>,
+        the world's largest openly available image-text-pair dataset with 400 million samples. Our model is based on
+        the <a target="_blank" href="https://github.com/lucidrains/DALLE-pytorch">dalle‑pytorch</a> implementation
+        by <a target="_blank" href="https://github.com/lucidrains">Phil Wang</a> with a few tweaks to make it communication-efficient.
+      </p>
+      <div class="accordion" id="accordionExample">
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingOne">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+              How to train efficiently over the Internet?
+            </button>
+          </h2>
+          <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+              <p>
+                Modern distributed training algorithms are designed for HPC networks with 10-100 gigabit per second bandwidth.
+                In turn, a typical Internet connection runs at 10-100 megabits per second: that’s three orders of magnitude slower.
+                To make distributed training efficient, you need to win back these three orders of magnitude.
+                This may seem daunting at first, but in reality, DL researchers have already made all the necessary pieces for solving this puzzle:
+              </p>
+              <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th scope="col">Speed&#8209;up</th>
+                    <th scope="col">How to achieve</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td class="centered"><strong>4-16x</strong></td><td>
+                    <strong>Large-batch training:</strong> <a target="_blank" rel="noopener noreferrer" href="https://arxiv.org/abs/1904.00962">You et al. (2019)</a> proposed a way for training neural networks efficiently with larger batches, and hence, fewer communication rounds.
+                  </td></tr>
+                  <tr><td class="centered"><strong>4-64x</strong></td><td>
+                    <strong>Gradient Compression:</strong> from simple <a target="_blank" rel="noopener noreferrer" href="https://arxiv.org/abs/1511.04561">8-bit quantization</a>
+                     to advanced techniques such as <a target="_blank" rel="noopener noreferrer" href="https://arxiv.org/abs/1712.01887">Deep Gradient Compression</a>,
+                     <a target="_blank" rel="noopener noreferrer" href="https://arxiv.org/abs/1905.13727">PowerSGD</a>, <a target="_blank" rel="noopener noreferrer" href="https://arxiv.org/abs/2102.02888">1-bit Adam</a>,
+                      and many others. As a rule of thumb, you can safely reduce communication by 16-64x. More extreme compression is often
+                      possible, but it may affect stability or final quality.
+                  </td></tr>
+                  <tr><td class="centered"><strong>4-24x</strong></td><td>
+                     <strong>Parameter sharing:</strong> reusing parameters between model layers results in a model with fewer parameters,
+                      and hence, fewer gradients to communicate. <a target="_blank" rel="noopener noreferrer" href="https://arxiv.org/abs/1909.11942">Lan et al. (2019)</a> and
+                      <a target="_blank" rel="noopener noreferrer" href="https://arxiv.org/pdf/2107.11817.pdf">Xue et al. (2021)</a> propose efficient parameter sharing techniques
+                      for NLP and vision.
+                  </td></tr>
+                  <tr><td class="centered"><strong>1.5-2x</strong></td><td>
+                     <strong>Overlapping computation with communication:</strong> running network communication in background while
+                     computing the next portion of gradients. This is a <a target="_blank" rel="noopener noreferrer" href="https://ur.booksc.eu/book/1624068/2d0506">long-standing trick from HPC</a>
+                      that was recently adapted for DL training. <a target="_blank" rel="noopener noreferrer" href="https://arxiv.org/abs/2101.06840">Ren et al. (2021)</a> show that
+                       updating parameters in background while computing the next batch of gradients does not reduce convergence.
+                  </td></tr>
+                </tbody>
+              </table>
+              <p>
+                These techniques are already more than enough to cover 1000x slower communication (48 times over!).
+                This means that in practice you can pick and choose choose which of them you want in your training run.
+                For this demo, we use 8x larger batches, 4x compression, 12x parameter sharing and partial overlapping.
+                If you don’t want parameter sharing, you can trade it for more advanced gradient compression or larger batches.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="my-4">How do I join?</h3>
+
+      <p>This section will be updated <strong>on December 7</strong>.</p>
+
+      <h3 class="my-4">What happens inside?</h3>
+
+      <div>
+          <!-- Nav tabs -->
+          <ul class="nav nav-tabs mb-3">
+              <li class="nav-item">
+                <a class="nav-link active" data-bs-toggle="tab" href="#memory-efficiency">Memory-Efficient Training</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="tab" href="#security">Security</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="tab" href="#make-your-own">Make Your Own</a>
+              </li>
+          </ul>
+
+          <!-- Tab panes -->
+          <div class="tab-content">
+              <div class="tab-pane fade active show" id="memory-efficiency">
+                  <p>
+                      Our aim is to train a large model in a decentralized fashion on consumer hardware or low-end cloud instances.
+                      This means we need to make the model, dataset, and other memory buffers fit onto a few GB of disk, 12-16 GB of CPU RAM,
+                      and 8-12 GB of GPU memory. Unfortunately, this rules out many popular techniques such as
+                      <a target="_blank" rel="noopener noreferrer" href="https://arxiv.org/abs/2101.06840">ZeRO-Offload</a>:
+                      there is simply not enough RAM for that. Instead, we must make better use of what limited memory we have.
+                      To do this, we use two techniques: 8-bit Optimizers for GPU memory and dataset streaming for RAM & HDD.
+                  </p>
+                  <p>
+                      <b>8-bit optimizers:</b>
+                      Using optimizers such as LAMB or Adam requires four times as much GPU memory as simply storing model parameters (8 bytes vs 2 bytes).
+                      As such, for training large models with many parameters the optimizers make up the largest chunk of memory.
+                      With 8-bit optimizers this memory is reduced by 75% (2 bytes) making it much easier to fit large models onto consumer GPUs.
+                  </p><p>
+                      Naturally, we can combine this technique with offloading: storing 8-bit optimizer states in CPU memory rather
+                      than GPU memory (0 bytes GPU, 2 bytes CPU). To perform an optimizer update, we transfer the GPU gradients
+                      to the CPU, perform the optimizer update, and then transfer the updated weights to the GPU.
+                      We can do this for each weight one-by-one so that additional CPU memory required for the optimizer update
+                      is minimal.
+                      The combination of offloading and 8-bit optimizers means that we conserve GPU memory (0 bytes per parameter)
+                      and also use only a limited amount of CPU memory (2 bytes per parameter).
+
+                  </p>
+                  <p>
+                      <b>Dataset streaming:</b>
+                      Usually data is stored on disk and needs to be fully or partially loaded into CPU memory to be used for training.
+                      Large datasets used for pre-training measure in <a href="https://arxiv.org/abs/2101.00027">hundreds of gigabytes</a> or even <a href="https://laion.ai/laion-400-open-dataset/">terabytes</a>.
+                      This can pose a significant problem, as most desktop and cheap cloud instance simply do not have that much space.
+                      Furthermore, downloading the dataset over the internet would take up hours before one can even begin training.
+                      <!--Changing the dataset means downloading a new dataset in full and using additional disk space.-->
+                  </p><p>
+                      To circumvent these problems, we stream the training dataset in the same way as you stream online videos.
+                      Participants download a small random portion of the training dataset and immediately begin training on it,
+                      while additional data is loaded in background. As such, we can train a model with virtually no memory
+                      overhead from the dataset and switching to a new dataset is as simple as changing an argument to the streamer class.
+                  </p>
+              </div>
+              <div class="tab-pane fade" id="security">
+                  <p>In this section, we discuss common concerns related to security of the collaborative training.</p>
+
+                  <p>
+                  <b>Q: If I join a collaborative training, do I allow other people to execute code on my computer?</b>
+                  </p>
+
+                  <p>
+                  <b>A:</b> During the training, participants only exchange data (gradients, statistics, model weights) and never send code to each other.
+                  No other peer can execute code on your computer.
+                  </p>
+
+                  <p>
+                  To join the training, you typically need to run the code (implementing the model, data streaming, training loop, etc.)
+                  from a repository or a Colab notebook provided by the authors of the experiment.
+                  This is no different from running any other open source project/Colab notebook.
+                  </p>
+
+                  <p>
+                  <b>Q: Can a malicious participant influence the training outcome?</b>
+                  </p>
+
+                  <p>
+                  <b>A:</b> It is indeed possible unless we use some defense mechanism.
+                  For instance, a malicious participant can damage model weights by sending large numbers instead of the correct gradients.
+                  The same can happen due to broken hardware or misconfiguration.
+                  </p>
+
+                  <ul>
+                  <li>
+                      <p>
+                      One possible defense is using <b>authentication</b> combined with <b>model checkpointing</b>.
+                      In this case, participants should log in (e.g. with their Hugging Face account) to interact with the rest of the collaboration.
+                      In turn, moderators can screen potential participants and add them to an allowlist.
+                      If something goes wrong (e.g. if a participant sends invalid gradients and the model diverges),
+                      the moderators remove them from the list and revert the model to the latest checkpoint unaffected by the attack.
+                      </p>
+
+  <!--                    <p><b>Spoiler (TODO): How to implement authentication in a decentralized system efficiently?</b></p>-->
+
+                      <p>
+                      Nice bonus: using this data, the moderators can acknowledge the personal contribution of each participant.
+                      </p>
+                  </li>
+                  <li>
+                  <p>
+                      Another defense is replacing the naive averaging of the peers' gradients with an <b>aggregation technique robust to outliers</b>.
+                      <a href="https://arxiv.org/abs/2012.10333">Karimireddy et al. (2020)</a>
+                      suggested such a technique (named CenteredClip) and proved that it does not significantly affect the model's convergence.
+                      </p>
+
+  <!--                    <p><b>Spoiler (TODO): How does CenteredClip protect from outliers? (Interactive Demo)</b></p>-->
+
+                      <p>
+                      In our case, CenteredClip is useful but not enough to protect from malicious participants,
+                      since it implies that the CenteredClip procedure itself is performed by a trusted server.
+                      In contrast, in our decentralized system, all participants can aggregate a part of the gradients and we cannot assume all of them to be trusted.
+                      </p>
+
+                      <p>
+                      Recently, <a href="https://arxiv.org/abs/2106.11257">Gorbunov et al. (2021)</a>
+                      proposed a robust aggregation protocol for decentralized systems that does not require this assumption.
+                      This protocol uses CenteredClip as a subroutine but is able to detect and ban participants who performed it incorrectly.
+                      </p>
+                  </li>
+                  </ul>
+              </div>
+              <div class="tab-pane fade" id="make-your-own">
+                  <p>In this section, we provide a roadmap for you to run the collaborative training yourself.</p>
+                  <p>
+                      <b>Got confused?</b> Feel free to ask any questions at our <a href="https://discord.gg/uGugx9zYvN">Discord</a>!
+                  </p>
+                  <ol>
+                      <li>
+                          Set up dataset streaming:
+                          <ul>
+                              <li>
+                                  <a href="https://huggingface.co/docs/datasets/share_dataset.html">Upload</a> your dataset to Hugging Face Hub
+                                  in a streaming-friendly format (<a href="https://huggingface.co/datasets/laion/laion_100m_vqgan_f8">example</a>).
+                              </li>
+                              <li>Set up dataset streaming (see the "Efficient Training" section).</li>
+                          </ul>
+                      </li>
+                      <li>
+                          Write code of training peers (<a href="https://github.com/learning-at-home/dalle-hivemind/blob/main/run_trainer.py">example</a>):
+                          <ul>
+                              <li>Implement your model, set up dataset streaming, and write the training loop.</li>
+                              <li>
+                                  Get familiar with the hivemind library
+                                  (e.g., via the <a href="https://learning-at-home.readthedocs.io/en/latest/user/quickstart.html">quickstart</a>).
+                              </li>
+                              <li>
+                                  In the training loop, wrap up your PyTorch optimizer with
+                                  <a href="https://learning-at-home.readthedocs.io/en/latest/modules/optim.html#hivemind.optim.experimental.optimizer.Optimizer">hivemind.Optimizer</a>
+                                  (<a href="https://github.com/learning-at-home/dalle-hivemind/blob/main/task.py#L121">example</a>).
+                              </li>
+                          </ul>
+                      </li>
+                      <li>
+                          <b>(optional)</b> Write code of auxiliary peers (<a href="https://github.com/learning-at-home/dalle-hivemind/blob/main/run_aux_peer.py">example</a>):
+                          <ul>
+                              <li>
+                                  Auxiliary peers a special kind of peers responsible for
+                                  logging loss and other metrics (e.g., to <a href="https://wandb.ai/">Weights & Biases</a>)
+                                  and uploading model checkpoints (e.g., to <a href="https://huggingface.co/docs/transformers/model_sharing">Hugging Face Hub</a>).
+                              </li>
+                              <li>
+                                  Such peers don't need to calculate gradients and may be run on cheap machines without GPUs.
+                              </li>
+                              <li>
+                                  They can serve as a convenient entry point to
+                                  <a href="https://learning-at-home.readthedocs.io/en/latest/modules/dht.html">hivemind.DHT</a>
+                                  (i.e., their address can be specified as <code>initial_peers</code>).
+                              </li>
+                              <li>
+                                  It is useful to fix their address by providing <code>host_maddrs</code> and <code>identity_path</code>
+                                  arguments to <code>hivemind.DHT</code>
+                                  (these are forwarded to the underlying <a href="https://libp2p.io/">libp2p</a> daemon).
+                              </li>
+                          </ul>
+                      </li>
+                      <li>
+                          <b>(optional)</b> Make it easier for other people to join:
+                          <ul>
+                              <li>
+                                  Create notebooks for free GPU providers (Google Colab, Kaggle, AWS SageMaker, etc.).
+                                  People may run them online and/or download and run them on their own hardware.
+                              </li>
+                              <li>
+                                  <a href="https://huggingface.co/organizations/new">Create</a> a Hugging Face organization
+                                  with all resources related to the training
+                                  (dataset, model, inference demo, links to a dashboard with loss and other metrics, etc.).
+                                  Look at <a href="https://huggingface.co/training-transformers-together">ours</a> as an example.
+                              </li>
+                              <li>
+                                  Set up an authentication system (see the "Security" section).
+                                  For example, you can ask people to join your organization with their Hugging Face accounts
+                                  (Hugging Face allows to share a link for joining or manually approve new participants).
+                                  This allows you to screen participants,
+                                  acknowledge their contributions (e.g., make a leaderboard), and
+                                  ban accounts who behave maliciously.
+                              </li>
+                              <li>
+                                  Set up an inference demo for your model (e.g., using <a href="https://huggingface.co/spaces">Spaces</a>) or
+                                  a script that periodically uploads the inference results to show the training progress.
+                              </li>
+                          </ul>
+                      </li>
+                  </ol>
+              </div>
+          </div>
+
+      </div>
+
+      <footer class="pt-3 my-md-5 pt-md-5 border-top">
+        <div style="width: 260px; margin:0 auto;">
+          <a class="github-button" href="https://github.com/learning-at-home/hivemind" data-size="large" data-show-count="false" aria-label="Star learning-at-home/hivemind on GitHub">Code</a>
+          <div style="overflow: hidden; white-space: nowrap; margin: 0 auto; display: inline-block;">
+              <button onclick="window.open('https://arxiv.org/abs/2106.10207');"
+                      class="arxiv_button">Paper</button>
+          </div>
+          <a href="https://twitter.com/intent/tweet?hashtags=neurips,joinhivemind&text=Join%20the%20deep%20learning%20hivemind!%0Atraining-transformers-together.github.io"
+              class="twitter-hashtag-button" data-show-count="true" data-size="large">Tweet</a>
+          <script async defer src="https://buttons.github.io/buttons.js"></script>
+          <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        </div>
+      </footer>
+    </div>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://getbootstrap.com/docs/5.0/dist/js/bootstrap.min.js"></script>
+  </body>
+</html>
