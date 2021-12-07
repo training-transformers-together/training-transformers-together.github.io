@@ -172,6 +172,48 @@
       </div>
     </div>
   </div>
+  <div class="accordion" id="accordionAnother" style="margin-top: 10px;">
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingTwo">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseOne">
+          How to train with different devices types?
+        </button>
+      </h2>
+      <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionAnother">
+        <div class="accordion-body">
+          <p>
+              Most distributed DL frameworks assume that the computation is performed by fleets of identical devices,
+              typically GPU servers or TPU cores. Under this assumption, each device can be assigned an equal part of
+              computation, such as processing a fixed batch size of training samples.
+              However, this quickly breaks down if workers use different device types. If one participant uses GPU (e.g. P100)
+              and another has TPU-v2-8, it is difficult to find a regime where both devices will be fully utilized.
+          </p>
+          <p>
+              To make the best use of all available devices, we let each device accumulate gradients at its own pace
+              with individually tuned batch size and some other features (e.g. gradient checkpointing or using XLA).
+              Once workers collectively aggregate some pre-defined global batch size, they average their gradients
+              with weights proportional to each worker's individual contribution (i.e. number of samples processed).
+          </p>
+          <a class="block overflow-hidden">
+              <div  class="w-full h-40 mb-2 bg-gray-900 group-hover:bg-gray-850 rounded-lg flex items-start justify-start overflow-hidden">
+                  <iframe src="https://www.youtube.com/embed/zdVsg5zsGdc" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" frameborder="0"
+                          style="width: 100%; height: 240px"></iframe>
+              </div>
+          </a>
+          <p>
+              This technique allows the "swarm" to automatically adjust its behavior as peers join, leave or fail.
+              For instance, if several high-performance peers join the "swarm", other peers will need to process a smaller
+              number of samples per optimizer step, and hence, the collaboration will train faster with the same hyperparameters.
+              In turn, if one of the workers fails and loses its progress (e.g. due to fp16 overflow), others will make
+              up for that by processing slightly more. For more details on how this works, please refer to
+              <a target="_blank" rel="noopener noreferrer" href="https://papers.nips.cc/paper/2021/hash/41a60377ba920919939d83326ebee5a1-Abstract.html">
+              "Deep Learning In Open Collaborations"</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
 
   <h3 class="my-4">How do I join?</h3>
 
