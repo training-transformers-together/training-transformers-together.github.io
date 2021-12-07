@@ -216,28 +216,30 @@
 
 
   <h3 class="my-4">How do I join?</h3>
-
-      <!--
-              "\n",
-        "1. \n",
-        "   * If you don't have an account or if you want to participate anonymously, you can create a new account at [huggingface.co/join](https://huggingface.co/join),\n",
-        "2. \n",
-        "3. Create a new User Access token at [huggingface.co/settings/token](https://huggingface.co/settings/token) and copy it to the clipboard\n",
-        "4. Run the code below: it will ask you for your token, then setup and begin training. That's it!\n",
-        "\n",
-        "If everything is fine, you will soon see your contribution on the [__training dashboard__](https://huggingface.co/spaces/training-transformers-together/Dashboard).\n",
-        "\n",
-        "If you have any questions, technical difficulties or just want to chat about distributed training, you can find us here: [![Discord](https://img.shields.io/static/v1?style=default&label=Discord&logo=discord&message=join)](https://discord.gg/uGugx9zYvN)\n",
-
-      -->
       <p> To participate in the demo training run, you need to follow these steps: </p>
       <ul class="mb-5">
           <li>Log into your <a target="_blank" rel="noopener noreferrer" href="https://huggingface.co">huggingface</a> account,</li>
           <li>Join our organization using this <a target="_blank" rel="noopener noreferrer" href="https://huggingface.co/organizations/training-transformers-together/share/otdYDceuoEIGEVXhrmYilPSnVUrnsrjJNz"><b>invite link</b></a></li>
-          <li>Create a new User Access token at <a target="_blank" rel="noopener noreferrer" href="https://huggingface.co/settings/token">huggingface.co/settings/token</a></li> and copy it to the clipboard,</li>
-          <li>Run the <a target="_blank" rel="noopener noreferrer" href="https://colab.research.google.com/github/training-transformers-together/training-transformers-together.github.io/blob/master/colab_gpu_starter.ipynb"><b>starter notebook</b></a> either locally or in colab,</li>
-          <li>If you have any difficulties, please visit our <a target="_blank" rel="noopener noreferrer" href="https://discord.gg/uGugx9zYvN">Discord</a> server.</li>
+          <li>Create a new User Access token at <a target="_blank" rel="noopener noreferrer" href="https://huggingface.co/settings/token">huggingface.co/settings/token</a> and copy it to the clipboard,</li>
+          <li>Run the <a target="_blank" rel="noopener noreferrer" href="https://colab.research.google.com/github/training-transformers-together/training-transformers-together.github.io/blob/master/colab_gpu_starter.ipynb"><b>starter notebook</b></a>
+              either locally or in colab: <a target="_blank" rel="noopener noreferrer" href="https://colab.research.google.com/github/training-transformers-together/training-transformers-together.github.io/blob/master/colab_gpu_starter.ipynb">
+                <img src="https://colab.research.google.com/assets/colab-badge.svg"></a><li>
       </ul>
+
+      <p>
+          If everything went fine, you will soon see that your colab notebook begins iterating minibatches and communicating with peers.
+          You can view the global collaboration progress in the
+          <a target="_blank" rel="noopener noreferrer" href="https://huggingface.co/spaces/training-transformers-together/Dashboard"><b>interactive dashboard</b></a>.
+          This dashboard also visualizes individual contributions of each peer and some statistics, such as swarm-wide GPU performance.
+      </p>
+      <p>
+          Sometimes it will also print communication error messages: this is
+          <a target="_blank" rel="noopener noreferrer"
+             href="https://memepedia.ru/wp-content/uploads/2017/05/%D0%BC%D0%B5%D0%BC-this-is-fine.png">fine</a> as long as the peer continues training after the error.
+          These error messages are typically caused by network faults and, more frequently, other peers disconnecting abruptly.
+          Our code is designed to recover from these errors, but it still shows them to the user for clarity.
+      </p>
+      <p>If you have any questions or if you encounter technical issues, please ask us in our NeurIPS room or visit our discord channel: <a target="_blank" rel="noopener noreferrer" href="https://discord.gg/uGugx9zYvN"><img src="https://img.shields.io/static/v1?style=default&label=Discord&logo=discord&message=join"></a><p></p>
 
 
 
