@@ -217,7 +217,29 @@
 
   <h3 class="my-4">How do I join?</h3>
 
-  <p>This section will be updated <strong>on December 7</strong>.</p>
+      <!--
+              "\n",
+        "1. \n",
+        "   * If you don't have an account or if you want to participate anonymously, you can create a new account at [huggingface.co/join](https://huggingface.co/join),\n",
+        "2. \n",
+        "3. Create a new User Access token at [huggingface.co/settings/token](https://huggingface.co/settings/token) and copy it to the clipboard\n",
+        "4. Run the code below: it will ask you for your token, then setup and begin training. That's it!\n",
+        "\n",
+        "If everything is fine, you will soon see your contribution on the [__training dashboard__](https://huggingface.co/spaces/training-transformers-together/Dashboard).\n",
+        "\n",
+        "If you have any questions, technical difficulties or just want to chat about distributed training, you can find us here: [![Discord](https://img.shields.io/static/v1?style=default&label=Discord&logo=discord&message=join)](https://discord.gg/uGugx9zYvN)\n",
+
+      -->
+      <p> To participate in the demo training run, you need to follow these steps: </p>
+      <ul class="mb-5">
+          <li>Log into your <a target="_blank" rel="noopener noreferrer" href="https://huggingface.co">huggingface</a> account,</li>
+          <li>Join our organization using this <a target="_blank" rel="noopener noreferrer" href="https://huggingface.co/organizations/training-transformers-together/share/otdYDceuoEIGEVXhrmYilPSnVUrnsrjJNz"><b>invite link</b></a></li>
+          <li>Create a new User Access token at <a target="_blank" rel="noopener noreferrer" href="https://huggingface.co/settings/token">huggingface.co/settings/token</a></li> and copy it to the clipboard,</li>
+          <li>Run the <a target="_blank" rel="noopener noreferrer" href="https://colab.research.google.com/github/training-transformers-together/training-transformers-together.github.io/blob/master/colab_gpu_starter.ipynb"><b>starter notebook</b></a> either locally or in colab,</li>
+          <li>If you have any difficulties, please visit our <a target="_blank" rel="noopener noreferrer" href="https://discord.gg/uGugx9zYvN">Discord</a> server.</li>
+      </ul>
+
+
 
   <h3 class="my-4">Practical aspects</h3>
 
@@ -270,7 +292,7 @@
                       sandbox="allow-forms allow-modals allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts allow-downloads"
                       style="top:-200px; left:-200; bottom:0; right:0; width: 100%; height:580px; border:none; margin:0; padding:0; z-index:999999; overflow: hidden;" scrolling=no>
                       <p>This was meant to be an IFrame, but your browser did not display it.</p>
-                      <p>Please go to <a href="https://huggingface.co/spaces/training-transformers-together/calc">https://huggingface.co/spaces/training-transformers-together/calc</a>.</p>
+                      <p>Please go to <a target="_blank" rel="noopener noreferrer"  href="https://huggingface.co/spaces/training-transformers-together/calc">https://huggingface.co/spaces/training-transformers-together/calc</a>.</p>
                   </iframe>
               </center>
               <p>
@@ -388,7 +410,7 @@
                       <ul>
                           <li>Implement your model, set up dataset streaming, and write the training loop.</li>
                           <li>
-                              Get familiar with the <a href="https://github.com/learning-at-home/hivemind">hivemind</a> library
+                              Get familiar with the <a target="_blank" rel="noopener noreferrer" href="https://github.com/learning-at-home/hivemind">hivemind</a> library
                               (<a target="_blank" rel="noopener noreferrer" href="https://learning-at-home.readthedocs.io/en/latest/user/quickstart.html">quickstart</a>).
                           </li>
                           <li>
@@ -411,7 +433,7 @@
                           </li>
                           <li>
                               They can serve as a convenient entry point to
-                              <a href="https://learning-at-home.readthedocs.io/en/latest/modules/dht.html">hivemind.DHT</a>
+                              <a target="_blank" rel="noopener noreferrer" href="https://learning-at-home.readthedocs.io/en/latest/modules/dht.html">hivemind.DHT</a>
                               (i.e., their address can be specified as <code>initial_peers</code>).
                           </li>
                           <li>
@@ -441,8 +463,8 @@
                               (the website allows either sharing a link for joining or manually approving new participants).
                               This allows you to screen the peers,
                               acknowledge their contributions (e.g., make a leaderboard), and
-                              ban accounts who behave maliciously. You can use our <a href="https://collaborative-training-auth.huggingface.co/docs">authentication system</a> or deploy your own
-                              (our <a href="https://github.com/huggingface/collaborative-training-auth/tree/demo-neurips">server implementation</a> might be a good start).
+                              ban accounts who behave maliciously. You can use our <a target="_blank" rel="noopener noreferrer"  href="https://collaborative-training-auth.huggingface.co/docs">authentication system</a> or deploy your own
+                              (our <a target="_blank" rel="noopener noreferrer" href="https://github.com/huggingface/collaborative-training-auth/tree/demo-neurips">server implementation</a> might be a good start).
                           </li>
                           <li>
                               Set up an inference demo for your model (e.g., using <a target="_blank" rel="noopener noreferrer" href="https://huggingface.co/spaces">Spaces</a>) or
@@ -459,23 +481,23 @@
   <h3 class="my-3">Organizers</h3>
 
     This demonstration was created by
-    <a href="https://twitter.com/sasha_borzunov">Alexander Borzunov*</a>,
-    <a href="https://twitter.com/m_ryabinin">Max Ryabinin*</a>,
-    <a href="https://twitter.com/Tim_Dettmers">Tim Dettmers*</a>,
-    <a href="https://twitter.com/qlhoest">Quentin Lhoest*</a>,
-    <a href="https://twitter.com/LucileSaulnier">Lucile Saulnier*</a>,
-    <a href="https://twitter.com/michael_diskin">Michael Diskin</a>,
-    <a href="https://twitter.com/YJernite">Yacine Jernite</a>, and
-    <a href="https://twitter.com/Thom_Wolf">Thomas Wolf</a>.
+    <a target="_blank" rel="noopener noreferrer" href="https://twitter.com/sasha_borzunov">Alexander Borzunov*</a>,
+    <a target="_blank" rel="noopener noreferrer" href="https://twitter.com/m_ryabinin">Max Ryabinin*</a>,
+    <a target="_blank" rel="noopener noreferrer" href="https://twitter.com/Tim_Dettmers">Tim Dettmers*</a>,
+    <a target="_blank" rel="noopener noreferrer" href="https://twitter.com/qlhoest">Quentin Lhoest*</a>,
+    <a target="_blank" rel="noopener noreferrer" href="https://twitter.com/LucileSaulnier">Lucile Saulnier*</a>,
+    <a target="_blank" rel="noopener noreferrer" href="https://twitter.com/michael_diskin">Michael Diskin</a>,
+    <a target="_blank" rel="noopener noreferrer" href="https://twitter.com/YJernite">Yacine Jernite</a>, and
+    <a target="_blank" rel="noopener noreferrer" href="https://twitter.com/Thom_Wolf">Thomas Wolf</a>.
 
   <h3 class="my-3">Learn more</h3>
 
   <ul class="mb-5">
       <li>A NeurIPS 2021 <a href="https://arxiv.org/abs/2106.10207">paper</a> on collaborative deep learning.</li>
-      <li><a href="https://github.com/learning-at-home/hivemind">hivemind</a> is a PyTorch library for decentralized deep learning.</li>
-      <li><a href="https://github.com/huggingface/datasets">🤗 Datasets</a> allows uploading and streaming training data from the Hub.</li>
-      <li><a href="https://github.com/facebookresearch/bitsandbytes">bitsandbytes</a> contains implementations of 8-bit optimizers.</li>
-      <li>A <a href="https://arxiv.org/abs/2110.02861">paper</a> on blockwise quantization for communication-efficient training.</li>
+      <li><a target="_blank" rel="noopener noreferrer" href="https://github.com/learning-at-home/hivemind">hivemind</a> is a PyTorch library for decentralized deep learning.</li>
+      <li><a target="_blank" rel="noopener noreferrer" href="https://github.com/huggingface/datasets">🤗 Datasets</a> allows uploading and streaming training data from the Hub.</li>
+      <li><a target="_blank" rel="noopener noreferrer" href="https://github.com/facebookresearch/bitsandbytes">bitsandbytes</a> contains implementations of 8-bit optimizers.</li>
+      <li>A <a target="_blank" rel="noopener noreferrer" href="https://arxiv.org/abs/2110.02861">paper</a> on blockwise quantization for communication-efficient training.</li>
       <!-- To be discussed:  How about mentioning the blog post containing videos that explain SahajBERT's collaborative training? -->
       <!-- <li>A <a href="https://hf.co/blog/collaborative-training">blog post</a> (with videos) on a collaborative training of a LM with 40 volunteers .</li> -->
   </ul>
