@@ -109,7 +109,7 @@
   </iframe>
   <p>
     In this demo, we train a model similar to <a target="_blank" href="https://openai.com/blog/dall-e/">OpenAI DALL-E</a> —
-    a Transformer "language model" that generates images from text descriptions.
+    a Transformer model that generates images from text descriptions.
     It is trained on <a target="_blank" href="https://laion.ai/laion-400-open-dataset/">LAION-400M</a>,
     the world's largest openly available image-text-pair dataset with 400 million samples. Our model is based on
     the <a target="_blank" href="https://github.com/lucidrains/DALLE-pytorch">dalle‑pytorch</a> implementation
@@ -412,6 +412,7 @@
                   </li>
                   <li>
                       <b>(optional)</b> Make it easier for other people to join:
+                      <!-- To be discussed:  What about "Make it easier and safer for other people to join" as there is the authentication bullet point?-->
                       <ul>
                           <li>
                               Create notebooks for free GPU providers (Google Colab, Kaggle, AWS SageMaker, etc.).
@@ -420,7 +421,7 @@
                           <li>
                               <a target="_blank" rel="noopener noreferrer" href="https://huggingface.co/organizations/new">Create</a> a Hugging Face organization
                               with all resources related to the training
-                              (dataset, model, inference demo, links to a dashboard with loss and other metrics, etc.).
+                              (dataset, model, inference demo, how-to-join walkthrough, links to a dashboard with loss and other metrics, etc.).
                               Look at <a target="_blank" rel="noopener noreferrer" href="https://huggingface.co/training-transformers-together">ours</a> for an example.
                           </li>
                           <li>
@@ -429,7 +430,8 @@
                               (the website allows either sharing a link for joining or manually approving new participants).
                               This allows you to screen the peers,
                               acknowledge their contributions (e.g., make a leaderboard), and
-                              ban accounts who behave maliciously.
+                              ban accounts who behave maliciously. You will need to use <a href="https://collaborative-training-auth.huggingface.co/docs">authentication system</a> or deploy your own for this system. 
+                              Our <a href="https://github.com/huggingface/collaborative-training-auth/tree/demo-neurips">server implementation</a> might be a good start.
                           </li>
                           <li>
                               Set up an inference demo for your model (e.g., using <a target="_blank" rel="noopener noreferrer" href="https://huggingface.co/spaces">Spaces</a>) or
@@ -463,6 +465,8 @@
       <li><a href="https://github.com/huggingface/datasets">🤗 Datasets</a> allows uploading and streaming training data from the Hub.</li>
       <li><a href="https://github.com/facebookresearch/bitsandbytes">bitsandbytes</a> contains implementations of 8-bit optimizers.</li>
       <li>A <a href="https://arxiv.org/abs/2110.02861">paper</a> on blockwise quantization for communication-efficient training.</li>
+      <!-- To be discussed:  How about mentioning the blog post containing videos that explain SahajBERT's collaborative training? -->
+      <!-- <li>A <a href="https://hf.co/blog/collaborative-training">blog post</a> (with videos) on a collaborative training of a LM with 40 volunteers .</li> -->
   </ul>
 
     <!-- Bootstrap core JavaScript
