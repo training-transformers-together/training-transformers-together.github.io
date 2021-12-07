@@ -186,7 +186,7 @@
               typically GPU servers or TPU cores. Under this assumption, each device can be assigned an equal part of
               computation, such as processing a fixed batch size of training samples.
               However, this quickly breaks down if workers use different device types. If one participant uses a GPU (e.g. P100)
-              and another has a TPU-v2-8, it is difficult to find a regime where both devices will be fully utilized.
+              and another runs on TPU-v2-8, it is difficult to find a regime where both devices will be fully utilized.
           </p>
           <p>
               To make the best use of all available devices, we let each device accumulate gradients at its own pace
