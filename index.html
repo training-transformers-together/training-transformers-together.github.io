@@ -105,7 +105,7 @@
       sandbox="allow-forms allow-modals allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts allow-downloads"
       style="top:-200px; left:0; bottom:0; right:0; width:100%; height:200px; border:none; margin:0; padding:0; z-index:999999;" scrolling=no>
       <p>This was meant to be an IFrame, but your browser did not display it.</p>
-      <p>Please go to <a href="https://huggingface.co/training-transformers-together/demo">https://huggingface.co/training-transformers-together</a>.</p>
+      <p>Please go to <a href="https://huggingface.co/spaces/training-transformers-together/demo">https://huggingface.co/spaces/training-transformers-together/demo</a>.</p>
   </iframe>
   <p>
     In this demo, we train a model similar to <a target="_blank" href="https://openai.com/blog/dall-e/">OpenAI DALL-E</a> —
@@ -182,16 +182,16 @@
       <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionAnother">
         <div class="accordion-body">
           <p>
-              Most distributed DL frameworks assume that the computation is performed by fleets of identical devices,
+              Most distributed DL frameworks assume that the computation is performed by a fleet of identical devices,
               typically GPU servers or TPU cores. Under this assumption, each device can be assigned an equal part of
               computation, such as processing a fixed batch size of training samples.
-              However, this quickly breaks down if workers use different device types. If one participant uses GPU (e.g. P100)
-              and another has TPU-v2-8, it is difficult to find a regime where both devices will be fully utilized.
+              However, this quickly breaks down if workers use different device types. If one participant uses a GPU (e.g. P100)
+              and another runs on TPU-v2-8, it is difficult to find a regime where both devices will be fully utilized.
           </p>
           <p>
               To make the best use of all available devices, we let each device accumulate gradients at its own pace
               with individually tuned batch size and some other features (e.g. gradient checkpointing or using XLA).
-              Once workers collectively aggregate some pre-defined global batch size, they average their gradients
+              Once workers collectively aggregate some predefined global batch size, they average their gradients
               with weights proportional to each worker's individual contribution (i.e. number of samples processed).
           </p>
           <a class="block overflow-hidden">
@@ -202,9 +202,9 @@
           </a>
           <p>
               This technique allows the "swarm" to automatically adjust its behavior as peers join, leave or fail.
-              For instance, if several high-performance peers join the "swarm", other peers will need to process a smaller
+              For instance, if several high-performance peers join the experiment, other peers will need to process a smaller
               number of samples per optimizer step, and hence, the collaboration will train faster with the same hyperparameters.
-              In turn, if one of the workers fails and loses its progress (e.g. due to fp16 overflow), others will make
+              In turn, if one of the workers fails and loses its progress (e.g. due to a fp16 overflow), others will make
               up for that by processing slightly more. For more details on how this works, please refer to
               <a target="_blank" rel="noopener noreferrer" href="https://papers.nips.cc/paper/2021/hash/41a60377ba920919939d83326ebee5a1-Abstract.html">
               "Deep Learning In Open Collaborations"</a> paper or the corresponding <a target="_blank" rel="noopener noreferrer" href="https://huggingface.co/blog/collaborative-training">blog post</a>.
@@ -219,7 +219,7 @@
 
   <p>This section will be updated <strong>on December 7</strong>.</p>
 
-  <h3 class="my-4">The practical aspects</h3>
+  <h3 class="my-4">Practical aspects</h3>
 
   <div class="border-bottom pb-3">
       <!-- Nav tabs -->
@@ -283,7 +283,7 @@
               </p>
               <center>
                   <img src="./logos/stream.gif" id="stream"
-                        style="width: 80%; max-height: 200px; max-width: 640px; z-index:1000; top:-20px; position: relative;">
+                        style="width: 80%; max-height: 200px; max-width: 640px; z-index:1000; top:-10px; position: relative;">
               </center>
               <p>
                   To circumvent these problems, it is possible to stream the data in the same way as you stream online videos.
@@ -373,7 +373,7 @@
                   <b>Got confused?</b> Feel free to ask any questions in our <a target="_blank" rel="noopener noreferrer" href="https://discord.gg/uGugx9zYvN">Discord</a>!
               </p>
               <ol>
-                  <li>
+                  <li class="mb-2">
                       Set up dataset streaming:
                       <ul>
                           <li>
@@ -383,7 +383,7 @@
                           <li>Set up dataset streaming (see the "Memory-Efficient Training" section).</li>
                       </ul>
                   </li>
-                  <li>
+                  <li class="mb-2">
                       Write the code of training peers (<a target="_blank" rel="noopener noreferrer" href="https://github.com/learning-at-home/dalle-hivemind/blob/main/run_trainer.py">example</a>):
                       <ul>
                           <li>Implement your model, set up dataset streaming, and write the training loop.</li>
@@ -398,7 +398,7 @@
                           </li>
                       </ul>
                   </li>
-                  <li>
+                  <li class="mb-2">
                       <b>(optional)</b> Write the code of auxiliary peers (<a target="_blank" rel="noopener noreferrer" href="https://github.com/learning-at-home/dalle-hivemind/blob/main/run_aux_peer.py">example</a>):
                       <ul>
                           <li>
@@ -421,7 +421,7 @@
                           </li>
                       </ul>
                   </li>
-                  <li>
+                  <li class="mb-2">
                       <b>(optional)</b> Make it easier for other people to join:
                       <!-- To be discussed:  What about "Make it easier and safer for other people to join" as there is the authentication bullet point?-->
                       <ul>
@@ -441,8 +441,8 @@
                               (the website allows either sharing a link for joining or manually approving new participants).
                               This allows you to screen the peers,
                               acknowledge their contributions (e.g., make a leaderboard), and
-                              ban accounts who behave maliciously. You will need to use <a href="https://collaborative-training-auth.huggingface.co/docs">authentication system</a> or deploy your own for this system. 
-                              Our <a href="https://github.com/huggingface/collaborative-training-auth/tree/demo-neurips">server implementation</a> might be a good start.
+                              ban accounts who behave maliciously. You can use our <a href="https://collaborative-training-auth.huggingface.co/docs">authentication system</a> or deploy your own
+                              (our <a href="https://github.com/huggingface/collaborative-training-auth/tree/demo-neurips">server implementation</a> might be a good start).
                           </li>
                           <li>
                               Set up an inference demo for your model (e.g., using <a target="_blank" rel="noopener noreferrer" href="https://huggingface.co/spaces">Spaces</a>) or
