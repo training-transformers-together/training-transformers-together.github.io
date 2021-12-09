@@ -287,6 +287,13 @@
                   This combination of offloading and 8-bit optimizers means that we conserve GPU memory (0 bytes per parameter)
                   and also use only a limited amount of CPU memory (2 bytes per parameter).
               </p>
+              <p>
+                  We've created an interactive "calculator" to help you get a better "feel" of which techniques to use and
+                  how they fit together. It covers 8-bit optimizers, offloading, as well as other popular tricks that emphasize memory efficiency.
+                  For each model configuration, it computes GPU and RAM usage based on the shapes of tensors that will be allocated.
+                  Of course, the real-world memory usage depends on the implementation details and technical inefficiencies.
+                  A good rule of thumb for PyTorch is to increase both CPU and GPU memory by 20-30%.
+              </p>
               <center>
                   <iframe id="iframe_calc" src="https://hf.space/streamlitiframe/training-transformers-together/calc/+"
                       data-src="https://hf.space/streamlitiframe/training-transformers-together/calc/+"
