@@ -172,7 +172,7 @@
       </div>
     </div>
   </div>
-  <div class="accordion" id="accordionAnother" style="margin-top: 10px;">
+  <div class="accordion mt-2" id="accordionAnother">
     <div class="accordion-item">
       <h2 class="accordion-header" id="headingTwo">
         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseOne">
@@ -230,6 +230,50 @@
           </li>
           <li>Keep it running for <b>at least 15 minutes</b> if you'd like your contribution to be recorded.</li>
       </ol>
+      <div class="accordion mt-2 mb-3" id="accordionLocalRun">
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingLocalRun">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseLocalRun" aria-expanded="false" aria-controls="collapseLocalRun">
+              Tips on running the notebook locally
+            </button>
+          </h2>
+          <div id="collapseLocalRun" class="accordion-collapse collapse" aria-labelledby="headingLocalRun" data-bs-parent="#accordionLocalRun">
+            <div class="accordion-body">
+              <ul>
+                <li class="mb-2">The notebook requires an NVIDIA GPU and Linux. It's also possible to run it inside WSL (Windows Subsystem for Linux) on Windows 11.</li>
+                <li class="mb-2">You need to install Anaconda, PyTorch, the CUDA toolkit, and other dependencies. In case of Ubuntu, you can run:
+                  <pre class="mt-2">
+sudo apt install -y git tmux
+curl https://repo.anaconda.com/archive/Anaconda3-2021.11-Linux-x86_64.sh > Anaconda3-2021.11-Linux-x86_64.sh
+bash Anaconda3-2021.11-Linux-x86_64.sh -b -p ~/anaconda3
+source ~/anaconda3/bin/activate
+conda install -y pytorch torchvision torchaudio cudatoolkit=11.3 -c pytorch
+
+git clone https://github.com/learning-at-home/dalle-hivemind
+cd dalle-hivemind && python3 -m pip install -r requirements.txt
+
+# Re-install bitsandbytes for the actual CUDA version
+pip uninstall -y bitsandbytes-cuda111
+pip install -y bitsandbytes-cuda113==0.26.0</pre>
+                </li>
+                <li class="mb-2">
+                  Download the
+                  <a target="_blank" rel="noopener noreferrer" href="https://colab.research.google.com/github/training-transformers-together/training-transformers-together.github.io/blob/master/colab_gpu_starter.ipynb"><b>notebook</b></a>
+                  and open it in Jupyter.
+                </li>
+                <li class="mb-2">
+                  If it fails to find <code>libcudart.so.11.0</code>, add the line below to <code>~/.bashrc</code>:
+                  <pre class="mt-2">
+export LD_LIBRARY_PATH="/usr/local/cuda/lib64:/usr/local/cuda/extras/CUPTI/lib64:$LD_LIBRARY_PATH"</pre>
+                </li>
+                <li class="mb-2">
+                  As reported by <b>@Umbreon</b>, the notebook uses 2 CPU cores, 13 GB RAM, 50 GB upload, and 50GB download per 6 hours.
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
       <p>
           If you have any questions or encounter any technical issues, don't hesitate to ask us in the <b>#help</b> channel of our Discord: <a target="_blank" rel="noopener noreferrer" href="https://discord.gg/uGugx9zYvN"><img src="https://img.shields.io/static/v1?style=default&label=Discord&logo=discord&message=join"></a>
       </p>
