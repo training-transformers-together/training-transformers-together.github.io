@@ -42,6 +42,19 @@ a:hover {
   text-decoration: underline;
 }
 
+.bg-success a {
+  color: white;
+  text-decoration: underline;
+}
+
+.bg-success a:visited {
+  color: white;
+}
+
+.bg-success a:hover {
+  color: #ddd;
+}
+
 pre {
   color: darkblue;
 }
